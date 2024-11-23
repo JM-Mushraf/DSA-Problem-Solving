@@ -24,7 +24,7 @@ public:
     }
     return parent[node] = findUpr(parent[node]);
   }
-  void unionBySize(int u, int v)
+  void unionByRank(int u, int v)
   {
     int ulp_u = findUpr(u);
     int ulp_v = findUpr(v);
@@ -44,7 +44,7 @@ public:
       rank[ulp_u]++;
     }
   }
-   void unionByRank(int u, int v)
+   void unionBySize(int u, int v)
   {
     int ulp_u = findUpr(u);
     int ulp_v = findUpr(v);
@@ -82,7 +82,7 @@ int main()
   {
     cout << "Not Same doesn't Belongs to same component"<<endl;
   }
-  ds.unionByRank(3, 7);
+  ds.unionBySize(3, 7);
   if (ds.findUpr(1) == ds.findUpr(7))
   {
     cout << "Same Belongs to same component"<<endl;
