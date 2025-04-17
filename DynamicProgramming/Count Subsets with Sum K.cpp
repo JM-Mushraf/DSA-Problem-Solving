@@ -38,17 +38,31 @@ Hence the output will be 3. Please note that both 1 present in 'arr' are treated
 // }
 
 //Memoization
-// int f(int ind, int k, vector<int>& nums, vector<vector<int>>& dp) {
-//     if (k == 0) return 1;
-//     if (ind == 0) return (nums[0] == k);
-//     if (dp[ind][k] != -1) return dp[ind][k];
+const int MOD = 1e9 + 7;
+int f(int ind, int k, vector<int>& nums, vector<vector<int>>& dp) {
+    if (ind == 0){
+		if(k==0 && nums[0]==0)return 2;
+		if(k==0 || k==nums[0])return 1;
+		return 0;
+	};
+    if (ind == 0) return (nums[0] == k);
+    if (dp[ind][k] != -1) return dp[ind][k];
     
-//     int notTake = f(ind - 1, k, nums, dp);
-//     int take = 0;
-//     if (nums[ind] <= k) take = f(ind - 1, k - nums[ind], nums, dp);
+    int notTake = f(ind - 1, k, nums, dp);
+    int take = 0;
+    if (nums[ind] <= k) take = f(ind - 1, k - nums[ind], nums, dp);
     
-//     return dp[ind][k] = take + notTake;
-// }
+    return dp[ind][k] = (take + notTake)%MOD;
+}
+
+int findWays(vector<int>& arr, int k) {
+	int n=arr.size();
+	vector<vector<int>>dp(n,vector<int>(k+1,-1));
+    return int(f(n-1,k,arr,dp)%MOD);
+}
+
+//Tabulation
+// const int MOD = 1e9 + 7;
 
 // int findWays(vector<int>& arr, int k) {
 //     int n = arr.size();
@@ -64,49 +78,26 @@ Hence the output will be 3. Please note that both 1 present in 'arr' are treated
 //     }
     
 //     int m = nonZeroArr.size();
-//     vector<vector<int>> dp(m, vector<int>(k + 1, -1));
-    
-//     int ways = f(m - 1, k, nonZeroArr, dp);
-//     return ways * (1 << countZeros);
-// }
-
-//Tabulation
-const int MOD = 1e9 + 7;
-
-int findWays(vector<int>& arr, int k) {
-    int n = arr.size();
-    int countZeros = 0;
-    vector<int> nonZeroArr;
-    
-    for (int num : arr) {
-        if (num == 0) {
-            countZeros++;
-        } else {
-            nonZeroArr.push_back(num);
-        }
-    }
-    
-    int m = nonZeroArr.size();
-    vector<vector<int>> dp(m + 1, vector<int>(k + 1, 0));
+//     vector<vector<int>> dp(m + 1, vector<int>(k + 1, 0));
  
-    for (int i = 0; i <= m; i++) {
-        dp[i][0] = 1;
-    }
+//     for (int i = 0; i <= m; i++) {
+//         dp[i][0] = 1;
+//     }
     
-    for (int i = 1; i <= m; i++) {
-        for (int j = 0; j <= k; j++) {
-            dp[i][j] = dp[i - 1][j]; // Not take
-            if (nonZeroArr[i - 1] <= j) {
-                dp[i][j] = (dp[i][j] + dp[i - 1][j - nonZeroArr[i - 1]]) % MOD; // Take
-            }
-        }
-    }
+//     for (int i = 1; i <= m; i++) {
+//         for (int j = 0; j <= k; j++) {
+//             dp[i][j] = dp[i - 1][j]; // Not take
+//             if (nonZeroArr[i - 1] <= j) {
+//                 dp[i][j] = (dp[i][j] + dp[i - 1][j - nonZeroArr[i - 1]]) % MOD; // Take
+//             }
+//         }
+//     }
     
-    // Multiply by 2^countZeros to account for all subsets including/excluding zeros
-    long long ways = dp[m][k];
-    for (int i = 0; i < countZeros; i++) {
-        ways = (ways * 2) % MOD;
-    }
+//     // Multiply by 2^countZeros to account for all subsets including/excluding zeros
+//     long long ways = dp[m][k];
+//     for (int i = 0; i < countZeros; i++) {
+//         ways = (ways * 2) % MOD;
+//     }
     
-    return (int)ways;
-}
+//     return (int)ways;
+// }
