@@ -1,4 +1,5 @@
 /*Problem statement
+https://www.naukri.com/code360/problems/number-of-subsets_3952532?leftPanelTabValue=SUBMISSION
 You are given an array 'arr' of size 'n' containing positive integers and a target sum 'k'.
 
 
