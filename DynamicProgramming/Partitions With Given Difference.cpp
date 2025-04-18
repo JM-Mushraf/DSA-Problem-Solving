@@ -129,5 +129,3 @@ int countPartitions(int n, int d, vector<int> &arr) {
     int target = (totalsum - d) / 2;
     return findWays(arr, target);
 }
-
-
