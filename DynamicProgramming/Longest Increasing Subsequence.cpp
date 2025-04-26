@@ -121,4 +121,22 @@ public:
     }
 };
 
+// tabulation using 1D array
+int lengthOfLIS(vector<int> &nums)
+{
+    int n = nums.size();
+    vector<int> dp(n, 1);
+
+    for (int ind = 0; ind < n; ind++)
+    {
+        for (int prevind = 0; prevind < ind; prevind++)
+        {
+            if (nums[prevind] < nums[ind] && 1 + dp[prevind] > dp[ind])
+            {
+                dp[ind] = 1 + dp[prevind];
+            }
+        }
+    }
+    return *max_element(dp.begin(), dp.end());
+}
 // prob link:-https://leetcode.com/problems/longest-increasing-subsequence/
