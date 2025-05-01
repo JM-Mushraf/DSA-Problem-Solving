@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<queue>
 using namespace std;
 
 class heap{
@@ -64,21 +65,30 @@ void max_heapify(int *arr,int n,int i){
     int leftChild=2*i;
     int rightChild=2*i+1;
 
-    if(leftChild<n && arr[leftChild]>arr[largest]){
+    if(leftChild<=n && arr[leftChild]>arr[largest]){
         largest=leftChild;
     }
-    if(rightChild<n && arr[rightChild]>arr[largest]){
+    if(rightChild<=n && arr[rightChild]>arr[largest]){
         largest=rightChild;
     }
 
     if(largest!=i){
         swap(arr[i],arr[largest]);
-        heapify(arr,n,largest);
+        max_heapify(arr,n,largest);
     }
 }
-
+void maxHeapSort(int *arr,int n){
+    int t=n;
+    while(t>1){
+        //step1
+        swap(arr[1],arr[t]);
+        //step2
+        t--;
+        // step3
+        max_heapify(arr,t,1);
+    }
+}
 //for 0 base indexing
-#include <bits/stdc++.h> 
 void minHeapify(vector<int>&arr,int i,int n){
     int smallest=i;
     int leftChild=2*i+1;
@@ -104,6 +114,7 @@ vector<int> buildMinHeap(vector<int> &arr)
     }
     return arr;
 }
+
 int main()
 {
     heap h;
@@ -124,5 +135,48 @@ int main()
     for(int i=1;i<=n;i++){
         cout<<arr[i]<<" ";
     }cout<<endl;
+
+    cout<<"Printing sorted heap"<<endl;
+    maxHeapSort(arr,n);
+    for(int i=1;i<=n;i++){
+        cout<<arr[i]<<" ";
+    }cout<<endl;
+
+
+    //heaps using priority_queue
+    cout<<"------------heap using priority_queue------------"<<endl;
+    cout<<"max heap"<<endl;
+    priority_queue<int>max_heap;//max_heap
+
+    max_heap.push(4);
+    max_heap.push(2);
+    max_heap.push(5);
+    max_heap.push(3);
+
+    cout<<max_heap.top()<<endl;
+    max_heap.pop();
+    cout<<max_heap.top()<<endl;
+    if(max_heap.empty()){
+        cout<<"priority_queue is empty"<<endl;
+    }else{
+        cout<<"priority_queue is not empty"<<endl;
+    }
+
+    // min heap
+    cout<<"min heap"<<endl;
+    priority_queue<int,vector<int>,greater<int>>min_heap;
+    min_heap.push(4);
+    min_heap.push(2);
+    min_heap.push(5);
+    min_heap.push(3);
+
+    cout<<min_heap.top()<<endl;
+    min_heap.pop();
+    cout<<min_heap.top()<<endl;
+    if(min_heap.empty()){
+        cout<<"priority_queue is empty"<<endl;
+    }else{
+        cout<<"priority_queue is not empty"<<endl;
+    }
     return 0;
 }
