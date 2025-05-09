@@ -2,7 +2,6 @@
 #include<vector>
 #include<queue>
 using namespace std;
-
 class heap{
     public:
     int arr[100];
