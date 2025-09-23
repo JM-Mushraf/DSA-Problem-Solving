@@ -26,7 +26,6 @@ Output: 0
 Explanation: All 1s are either on the boundary or can reach the boundary.*/
 // code:
 
-
 class Solution {
 public:
     int numEnclaves(vector<vector<int>>& grid) {

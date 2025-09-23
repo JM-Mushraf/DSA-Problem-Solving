@@ -3,14 +3,14 @@
 using namespace std;
 class DisjointSet
 {
-  vector<int> rank, parent,size;
+  vector<int> rank, parent, size;
 
 public:
   DisjointSet(int n)
   {
     rank.resize(n + 1, 0);
     parent.resize(n + 1);
-    size.resize(n+1,1);
+    size.resize(n + 1, 1);
     for (int i = 0; i < n; i++)
     {
       parent[i] = i;
@@ -44,19 +44,21 @@ public:
       rank[ulp_u]++;
     }
   }
-   void unionBySize(int u, int v)
+  void unionBySize(int u, int v)
   {
     int ulp_u = findUpr(u);
     int ulp_v = findUpr(v);
     if (ulp_u == ulp_v)
       return;
-    if(size[ulp_u]<size[ulp_v]){
-      parent[ulp_u]=ulp_v;
-      size[ulp_v]++;
+    if (size[ulp_u] < size[ulp_v])
+    {
+      parent[ulp_u] = ulp_v;
+      size[ulp_v] += size[ulp_u]; // ✅ add the full size of u's set
     }
-    else{
-      parent[ulp_v]=ulp_u;
-      size[ulp_u]++;
+    else
+    {
+      parent[ulp_v] = ulp_u;
+      size[ulp_u] += size[ulp_v]; // ✅ add the full size of v's set
     }
   }
 };
@@ -76,20 +78,20 @@ int main()
   ds.unionBySize(5, 6);
   if (ds.findUpr(1) == ds.findUpr(7))
   {
-    cout << "Same Belongs to same component"<<endl;
+    cout << "Same Belongs to same component" << endl;
   }
   else
   {
-    cout << "Not Same doesn't Belongs to same component"<<endl;
+    cout << "Not Same doesn't Belongs to same component" << endl;
   }
   ds.unionBySize(3, 7);
   if (ds.findUpr(1) == ds.findUpr(7))
   {
-    cout << "Same Belongs to same component"<<endl;
+    cout << "Same Belongs to same component" << endl;
   }
   else
   {
-    cout << "Not Same doesn't Belongs to same component"<<endl;
+    cout << "Not Same doesn't Belongs to same component" << endl;
   }
   return 0;
 }

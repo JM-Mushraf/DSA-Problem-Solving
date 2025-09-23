@@ -3,7 +3,8 @@ Easy
 Topics
 Companies
 Hint
-You are given an image represented by an m x n grid of integers image, where image[i][j] represents the pixel value of the image. You are also given three integers sr, sc, and color. Your task is to perform a flood fill on the image starting from the pixel image[sr][sc].
+You are given an image represented by an m x n grid of integers image, where image[i][j] represents the pixel value of the image.
+You are also given three integers sr, sc, and color. Your task is to perform a flood fill on the image starting from the pixel image[sr][sc].
 
 To perform a flood fill:
 
@@ -13,7 +14,7 @@ Keep repeating this process by checking neighboring pixels of the updated pixels
 The process stops when there are no more adjacent pixels of the original color to update.
 Return the modified image after performing the flood fill.
 
- 
+
 
 Example 1:
 
@@ -39,34 +40,100 @@ Explanation:
 
 The starting pixel is already colored with 0, which is the same as the target color. Therefore, no changes are made to the image.*/
 
-
-//CODE:
-class Solution {
+// CODE:
+class Solution
+{
 public:
-    bool isValid(vector<vector<int>>& image, int i, int j,int n,int m,int color)
+    bool isValid(vector<vector<int>> &image, int i, int j, int n, int m, int color)
     {
-        if(i>=0 && i<n && j>=0 && j<m && image[i][j]==color)
+        if (i >= 0 && i < n && j >= 0 && j < m && image[i][j] == color)
             return true;
         return false;
     }
-    void floodFillRec(vector<vector<int>>& image, int i, int j,int n,int m,int color,int newColor){
-        image[i][j]=newColor;
-        if(isValid(image,i+1,j,n,m,color))
-            floodFillRec(image,i+1,j,n,m,color,newColor);
-        if(isValid(image,i-1,j,n,m,color))
-            floodFillRec(image,i-1,j,n,m,color,newColor);
-        if(isValid(image,i,j+1,n,m,color))
-            floodFillRec(image,i,j+1,n,m,color,newColor);
-        if(isValid(image,i,j-1,n,m,color))
-            floodFillRec(image,i,j-1,n,m,color,newColor);
+    void floodFillRec(vector<vector<int>> &image, int i, int j, int n, int m, int color, int newColor)
+    {
+        image[i][j] = newColor;
+        if (isValid(image, i + 1, j, n, m, color))
+            floodFillRec(image, i + 1, j, n, m, color, newColor);
+        if (isValid(image, i - 1, j, n, m, color))
+            floodFillRec(image, i - 1, j, n, m, color, newColor);
+        if (isValid(image, i, j + 1, n, m, color))
+            floodFillRec(image, i, j + 1, n, m, color, newColor);
+        if (isValid(image, i, j - 1, n, m, color))
+            floodFillRec(image, i, j - 1, n, m, color, newColor);
     }
-    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor)  {
-        int n=image.size();
-        int m=image[0].size();
-        int color=image[sr][sc];
-        if(color==newColor)
-           return image;
-        floodFillRec(image,sr,sc,n,m,color,newColor);
-          return image;
+    vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int newColor)
+    {
+        int n = image.size();
+        int m = image[0].size();
+        int color = image[sr][sc];
+        if (color == newColor)
+            return image;
+        floodFillRec(image, sr, sc, n, m, color, newColor);
+        return image;
     }
-    };
+};
+
+class Solution
+{
+public:
+    bool isValid(vector<vector<int>> &image, int i, int j, int n, int m, int color)
+    {
+        if (i >= 0 && i < n && j >= 0 && j < m && image[i][j] == color)
+            return true;
+        return false;
+    }
+    void floodFillRec(vector<vector<int>> &image, int i, int j, int n, int m, int color, int newColor)
+    {
+        image[i][j] = newColor;
+        if (isValid(image, i + 1, j, n, m, color))
+            floodFillRec(image, i + 1, j, n, m, color, newColor);
+        if (isValid(image, i - 1, j, n, m, color))
+            floodFillRec(image, i - 1, j, n, m, color, newColor);
+        if (isValid(image, i, j + 1, n, m, color))
+            floodFillRec(image, i, j + 1, n, m, color, newColor);
+        if (isValid(image, i, j - 1, n, m, color))
+            floodFillRec(image, i, j - 1, n, m, color, newColor);
+    }
+    vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int newColor)
+    {
+        int n = image.size();
+        int m = image[0].size();
+        int color = image[sr][sc];
+        if (color == newColor)
+            return image;
+        floodFillRec(image, sr, sc, n, m, color, newColor);
+        return image;
+    }
+};
+
+class Solution
+{
+public:
+    void floodFillrec(vector<vector<int>> &image, int row, int col, int newColor, int *drow, int *dcol)
+    {
+        int n = image.size();
+        int m = image[0].size();
+        image[row][col] = newcolor;
+        for (int i = 0; i < 4; i++)
+        {
+            int nrow = row + drow[i];
+            int ncol = col + dcol[i];
+            if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && image[nrow][ncol] == col)
+            {
+                floodFillrec(image, nrow, ncol, newcolor, drow, dcol);
+            }
+        }
+    }
+    vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int newColor)
+    {
+        int color = image[sr][sc];
+
+        if (newColor == color)
+            return image;
+        int drow[] = {-1, 0, 1, 0};
+        int dcol[] = {0, +1, 0, -1};
+        floodFillrec(image, sr, sc, newcolor, drow, dcol);
+        return image;
+    }
+};

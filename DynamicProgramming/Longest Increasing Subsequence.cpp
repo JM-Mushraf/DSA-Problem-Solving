@@ -44,7 +44,7 @@ public:
     //     return f(0,-1,n,nums);
     // }
 
-    // Recurssion
+    // Memoization
     //  int f(int ind,int prev_ind,int n,vector<int>&nums,vector<vector<int>>&dp){
 
     //     //base case

@@ -116,7 +116,7 @@ class Solution {
         //     //if(j==0) return 1;
         //     for(int i=0;i<=n;i++)dp[i][0]=1;
         //     //if(i==0) return 0;
-        //     // for(int j=0;j<=m;j++)dp[0][j]=0; cau7se we already filled dp with 0
+        //     // for(int j=0;j<=m;j++)dp[0][j]=0; cause we already filled dp with 0
     
         //     //loops for changing vars
         //     for(int i=1;i<=n;i++){
@@ -144,7 +144,7 @@ class Solution {
         //     //if(j==0) return 1;
         //     prev[0]=curr[0]=1;
         //     //if(i==0) return 0;
-        //     // for(int j=0;j<=m;j++)dp[0][j]=0; cau7se we already filled dp with 0
+        //     // for(int j=0;j<=m;j++)dp[0][j]=0; cause we already filled dp with 0
     
         //     //loops for changing vars
         //     for(int i=1;i<=n;i++){

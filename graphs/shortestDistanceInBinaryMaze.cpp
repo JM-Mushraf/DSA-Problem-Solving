@@ -44,6 +44,7 @@ destination, hence return -1.*/
 int shortestPath(vector<vector<int>> &grid, pair<int, int> source,
                  pair<int, int> destination)
 {
+    if (source == destination) return 0;
     int n = grid.size();
     int m = grid[0].size();
     queue<pair<int, pair<int, int>>> q;
