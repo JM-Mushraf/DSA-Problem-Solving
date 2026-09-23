@@ -94,3 +94,5 @@ public:
         return ans;
     }
 };
+
+// link: https://leetcode.com/problems/accounts-merge/

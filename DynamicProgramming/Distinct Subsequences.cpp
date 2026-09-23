@@ -1,6 +1,6 @@
 /*115. Distinct Subsequences
 Solved
-Hard
+Hard`
 Topics
 Companies
 Given two strings s and t, return the number of distinct subsequences of s which equals t.
@@ -39,7 +39,7 @@ class Solution {
         //     //base case
         //     //str2 match found
         //     if(j<0) return 1;
-        //     //no atch found for s2 in s1 si ind is -ve
+        //     //no match found for s2 in s1 si ind is -ve
         //     if(i<0)return 0;
             
         //     //matching char found in s1 ,char of s2

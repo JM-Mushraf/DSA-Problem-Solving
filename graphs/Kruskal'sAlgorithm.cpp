@@ -80,3 +80,5 @@ public:
         return mstwt;
     }
 };
+
+// link: https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1

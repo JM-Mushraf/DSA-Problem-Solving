@@ -65,3 +65,4 @@ public:
         return true;
     }
 };
+// link: https://leetcode.com/problems/is-graph-bipartite/

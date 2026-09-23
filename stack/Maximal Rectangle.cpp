@@ -62,4 +62,61 @@ public:
     }
 };
 
+
+
+
+
+
+
+class Solution {
+public:
+    int largestRectangle(vector<int>&arr){
+        int n=arr.size();
+        stack<int>st;
+        int nse=0,pse=0;
+        int res=0;
+        for(int i=0;i<n;i++){
+            while(!st.empty() && arr[st.top()]>arr[i]){
+                int ind=st.top();
+                st.pop();
+                nse=i;
+                pse=st.empty()?-1:st.top();
+                res=max(res,((nse-pse-1)*arr[ind]));
+            }
+            st.push(i);
+        }
+        while(!st.empty()){
+            nse=n;
+            int ind=st.top();
+            st.pop();
+            pse=st.empty()?-1:st.top();
+
+            res=max(res,((nse-pse-1)*arr[ind]));
+        }
+        return res;
+    }
+    int maximalRectangle(vector<vector<char>>& matrix) {
+        if(matrix.empty())return 0;
+
+        int n=matrix.size();
+        int m=matrix[0].size();
+        vector<vector<int>>psum(n,vector<int>(m,0));
+
+        for(int j=0;j<m;j++){
+            int sum=0;
+            for(int i=0;i<n;i++){
+                int val=matrix[i][j] - '0';
+                sum= (val==0)?0:sum+1;
+                psum[i][j]=sum;
+            }
+        }   
+        int maxArea=0;
+        for(int i=0;i<n;i++){
+            // for(int j=0;j<m;j++){
+                maxArea=max(maxArea,largestRectangle(psum[i]));
+            // }
+        }
+        return maxArea;
+    }
+};
 // prob link:https://leetcode.com/problems/maximal-rectangle/?envType=problem-list-v2&envId=stack

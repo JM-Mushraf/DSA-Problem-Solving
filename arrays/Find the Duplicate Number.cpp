@@ -11,8 +11,6 @@ There is only one repeated number in nums, return this repeated number.
 
 You must solve the problem without modifying the array nums and using only constant extra space.
 
- 
-
 Example 1:
 
 Input: nums = [1,3,4,2,2]
@@ -25,7 +23,7 @@ Example 3:
 
 Input: nums = [3,3,3,3,3]
 Output: 3
- 
+
 
 Constraints:
 
@@ -36,17 +34,45 @@ All the integers in nums appear only once except for precisely one integer which
 */
 
 // code:
-class Solution {
-public:
-    int findDuplicate(vector<int>& nums) {
-        unordered_map<int,int> mp;
-        int n = nums.size();
-        for (int i = 0; i < n; i++) {
-            if (mp.find(nums[i]) != mp.end()) {
-                return nums[i];
-            }
-            mp[nums[i]] = 1;
-        }
-        return -1;
+
+// using extra space
+// class Solution
+// {
+// public:
+//     int findDuplicate(vector<int> &nums)
+//     {
+//         unordered_map<int, int> mp;
+//         int n = nums.size();
+//         for (int i = 0; i < n; i++)
+//         {
+//             if (mp.find(nums[i]) != mp.end())
+//             {
+//                 return nums[i];
+//             }
+//             mp[nums[i]] = 1;
+//         }
+//         return -1;
+//     }
+// };
+
+// without extra space
+int findDuplicate(vector<int> &nums)
+{
+    int slow = nums[0];
+    int fast = nums[0];
+
+    // fin the intersection point
+    do
+    {
+        slow = nums[slow];
+        fast = nums[nums[fast]];
+    } while (slow != fast);
+
+    slow = nums[0];
+    while (slow != fast)
+    {
+        slow = nums[slow];
+        fast = nums[fast];
     }
-};
+    return slow;
+}

@@ -21,7 +21,7 @@ Explanation: The array cannot be partitioned into equal sum subsets.*/
 
 class Solution {
     public:
-        //Recurssion
+    //Recurssion
     // bool f(int ind,int k,vector<int> &arr){
     //     if(k==0)return true;
     //     if(ind==0)return (k==arr[0]);

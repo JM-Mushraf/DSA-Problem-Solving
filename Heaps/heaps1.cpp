@@ -38,6 +38,7 @@ class heap{
         }
         //step1 swap root with last element
         arr[1]=arr[size];
+        
         //step2 delete last element
         size--;
         int ind=1;

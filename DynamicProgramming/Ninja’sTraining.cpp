@@ -144,17 +144,18 @@ int ninjaTraining(int n, vector<vector<int>> &points)
     prev[3] = max(points[0][0], max(points[0][1], points[0][2]));
 
     for (int day = 1; day < n; day++) {
-        vector<int> temp(4, -1);
+        vector<int> curr(4, -1);
         for (int last = 0; last < 3; last++) {
-            temp[last] = 0;
+            curr[last] = 0;
             for (int task = 0; task < 3; task++) {
                 if (task != last) {
                     int point = points[day][task] + prev[task];
-                    temp[last] = max(temp[last], point);
+                    curr[last] = max(curr[last], point);
                 }
             }
         }
-        prev = temp;
+        prev = curr;
     }
     return max(prev[0], max(prev[1], prev[2]));
 }
+// link: https://www.codingninjas.com/codestudio/problems/ninja-s-training_3621003

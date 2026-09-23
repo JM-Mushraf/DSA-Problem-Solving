@@ -1,4 +1,4 @@
-/*1092. Shortest Common Supersequence 
+ /*1092. Shortest Common Supersequence 
 Solved
 Hard
 Topics

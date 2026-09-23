@@ -16,9 +16,15 @@ To capture a surrounded region, replace all 'O's with 'X's in-place within the o
 
 Example 1:
 
-Input: board = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
+Input: board = [["X","X","X","X"],
+                ["X","O","O","X"],
+                ["X","X","O","X"],
+                ["X","O","X","X"]]
 
-Output: [["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]]
+Output: [["X","X","X","X"],
+         ["X","X","X","X"],
+         ["X","X","X","X"],
+         ["X","O","X","X"]]
 */
 
 // code:

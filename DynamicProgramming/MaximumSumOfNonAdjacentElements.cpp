@@ -45,3 +45,5 @@ int maximumNonAdjacentSum(vector<int> &nums) {
     }
     return prev;
 }
+
+// link: https://www.codingninjas.com/codestudio/problems/maximum-sum-of-non-adjacent-elements_3621016

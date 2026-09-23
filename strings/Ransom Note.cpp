@@ -6,7 +6,6 @@ Topics
 premium lock icon
 Companies
 Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
-
 Each letter in magazine can only be used once in ransomNote.
 
  
@@ -37,6 +36,7 @@ public:
     bool canConstruct(string ransomNote, string magazine) {
         unordered_map<char,int>mp;
 
+        if(ransomNote.size()>magazine.size())return false;
         for(int i=0;i<magazine.size();i++){
             if(mp.find(magazine[i])!=mp.end()){
                 mp[magazine[i]]++;

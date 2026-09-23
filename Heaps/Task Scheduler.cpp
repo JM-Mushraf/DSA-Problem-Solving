@@ -38,7 +38,6 @@ class Solution
 public:
     int leastInterval(vector<char> &tasks, int n)
     {
-
         // step1:calculate frequency
         unordered_map<char, int> f;
         for (auto i : tasks)

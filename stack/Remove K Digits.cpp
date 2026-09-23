@@ -56,8 +56,7 @@ public:
         while (!st.empty()) {
             res += st.top();
             st.pop();
-        }
-
+        } 
         // Remove trailing zeroes (which are actually leading zeroes after reversal)
         while (!res.empty() && res.back() == '0') {
             res.pop_back();

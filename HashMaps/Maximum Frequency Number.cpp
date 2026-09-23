@@ -1,6 +1,7 @@
 /*
 Problem statement
-Ninja is given an array of integers that contain numbers in random order. He needs to write a program to find and return the number which occurs the maximum times in the given input. He needs your help to solve this problem.
+Ninja is given an array of integers that contain numbers in random order. He needs to write a program to find and return the number which occurs the maximum times in the given input. 
+He needs your help to solve this problem.
 
 If two or more elements contend for the maximum frequency, return the element which occurs in the array first i.e. whose index is lowest.
 

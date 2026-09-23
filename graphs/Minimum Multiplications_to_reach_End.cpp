@@ -18,7 +18,7 @@ int minimumMultiplications(vector<int> &arr, int start, int end)
                 dist[num] = steps + 1;
                 if (num == end)
                     return steps + 1;
-                q.push({num.steps+1});
+                q.push({num,steps+1});
             }
         }
     }

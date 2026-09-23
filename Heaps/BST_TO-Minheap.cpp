@@ -1,6 +1,5 @@
 /*Given a binary search tree which is also a complete binary tree. The problem is to convert the given BST into a Min Heap with the condition that all the values in the left subtree of a node should be less than all the values in the right subtree of the node. This condition is applied to all the nodes, in the resultant converted Min Heap. */
 
-
 #include<iostream>
 #include <vector>
 using namespace std;
@@ -25,6 +24,7 @@ void inOrder(Node*root, vector<int>&in){
 }
 void preOrder(Node*root,vector<int>&in,int &ind){
     if(root==NULL) return;
+    
     root->data=in[ind++];
     preOrder(root->left,in,ind);
     preOrder(root->right,in,ind);

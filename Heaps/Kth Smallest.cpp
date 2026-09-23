@@ -1,4 +1,5 @@
-/*Given an array arr[] and an integer k where k is smaller than the size of the array, your task is to find the kth smallest element in the given array.
+/*Given an array arr[] and an integer k where k is smaller than the size of the array, 
+your task is to find the kth smallest element in the given array.
 
 Follow up: Don't solve it using the inbuilt sort function.
 

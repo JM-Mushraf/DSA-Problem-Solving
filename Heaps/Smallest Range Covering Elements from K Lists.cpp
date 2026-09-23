@@ -24,6 +24,7 @@ Input: nums = [[1,2,3],[1,2,3],[1,2,3]]
 Output: [1,1]
 */
 
+
 // code:-
 // returning range array
 class Solution {
@@ -108,6 +109,7 @@ class compare{
             return a->data > b->data;
         }
 };
+
 int kSorted(vector<vector<int>> &a, int k, int n) {
     int mini=INT_MAX,maxi=INT_MIN;
     priority_queue<node*,vector<node*>,compare>min_heap;
